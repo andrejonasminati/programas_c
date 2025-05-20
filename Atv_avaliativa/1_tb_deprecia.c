@@ -1,4 +1,3 @@
-// Online C compiler to run C program online
 #include <stdio.h>
 
 float valor_bem, valor_depreciado,depreciacao;
