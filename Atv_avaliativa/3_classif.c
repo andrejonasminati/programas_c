@@ -7,7 +7,7 @@ int main() {
     printf("Informe quantos alunos:\n>>");
     scanf("%d", &total_alunos);
     int lista[total_alunos];
-    printf("Informe as vagas disponíveis:\n>>");
+    printf("Informe as vagas disponiveis:\n>>");
     scanf("%d", &vagas);
     printf("Digite a nota de cada aluno\n");
     for(int x=0; x<total_alunos; x++){

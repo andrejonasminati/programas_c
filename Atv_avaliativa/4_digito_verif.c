@@ -1,29 +1,46 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
-    int entrada;
-    int valor1, valor2, valor3, valor4, verificador, temp;
+    int numero, numero_conta, digito_informado;
+    int centena, dezena, unidade, inverso, soma;
+    int resultado = 0, posicao = 1, digito_calculado;
 
-    while(1){
-        printf("Digite um numero de quatro digitos para ser validado: ");
-        scanf("%d", entrada);
-        if (entrada > 1000 && entrada < 9999){
-                break;
-            } 
-        else {
-                printf("Numero invalido.\n");
-            }
+    do {
+        printf("Digite um numero de 4 digitos (ex: 1234)\n>> ");
+        scanf("%d", &numero);
+
+        if (numero < 1000 || numero > 9999) {
+            printf("Numero invalido! Tente novamente.\n");
+        }
+    } while (numero < 1000 || numero > 9999);
+
+    numero_conta = numero / 10;
+    digito_informado = numero % 10;
+
+    centena = numero_conta / 100;
+    dezena = (numero_conta / 10) % 10;
+    unidade = numero_conta % 10;
+    inverso = unidade * 100 + dezena * 10 + centena;
+
+    soma = numero_conta + inverso;
+
+    while (soma > 0) {
+        resultado += (soma % 10) * posicao;
+        soma /= 10;
+        posicao++;
     }
 
-    printf("%c\n", (int)valor1);
-    printf("%c\n", (int)valor2);
-    printf("%c\n", (int)valor3);
-    printf("%c\n", (int)valor4);
+    digito_calculado = resultado % 10;
 
-    strcat(valor1,valor2);
-    printf("%s\n", (int)valor1);
+    printf("Numero da conta: %d\n", numero_conta);
+    printf("Digito verificador informado: %d\n", digito_informado);
+    printf("Digito verificador calculado: %d\n", digito_calculado);
 
+    if (digito_informado == digito_calculado) {
+        printf("Numero da conta VALIDO.\n");
+    } else {
+        printf("Numero da conta INVALIDO.\n");
+    }
 
     return 0;
 }
